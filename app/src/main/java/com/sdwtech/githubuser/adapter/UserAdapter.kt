@@ -10,8 +10,14 @@ import com.sdwtech.githubuser.data.User
 import com.sdwtech.githubuser.databinding.ItemUserBinding
 import com.sdwtech.githubuser.detail.DetailActivity
 
-class UserAdapter(private val listUser: ArrayList<User>):RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdapter(private val listUser: ArrayList<User>) :
+        RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
+    fun setData(list: ArrayList<User>) {
+        listUser.clear()
+        listUser.addAll(list)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -33,9 +39,9 @@ class UserAdapter(private val listUser: ArrayList<User>):RecyclerView.Adapter<Us
         RecyclerView.ViewHolder(binding.root){
             fun bind(user: User) {
                 binding.tvItemName.text = user.name
-                binding.tvItemUsername.text = user.username
+                binding.tvItemUsername.text = user.login
                 binding.tvCompany.text = user.company
-                binding.imgItemPhoto.load(user.photo) {
+                binding.imgItemPhoto.load(user.avatar_url) {
                     transformations(RoundedCornersTransformation(20f))
                 }
 

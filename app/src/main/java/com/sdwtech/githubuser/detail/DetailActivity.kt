@@ -2,9 +2,11 @@ package com.sdwtech.githubuser.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.sdwtech.githubuser.data.User
 import com.sdwtech.githubuser.databinding.ActivityDetailBinding
+import com.sdwtech.githubuser.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
 
@@ -20,12 +22,24 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        val viewModel = ViewModelProvider(
+                this, ViewModelProvider.NewInstanceFactory()
+        )[DetailViewModel::class.java]
+
         val dataUser = intent.getParcelableExtra<User>(EXTRA_DETAIL)
 
-        dataUser?.photo?.let { binding.detailPhoto.load(it) }
-        binding.tvDetailName.text = dataUser?.name
-        binding.tvDetailUsername.text = dataUser?.username
-        binding.tvDetailCompany.text = dataUser?.company
+        dataUser?.let { viewModel.setData(it.login) }
+        viewModel.getData().observe(this, {
+            if (it != null) {
+                dataUser?.avatar_url?.let { binding.detailPhoto.load(it) }
+                binding.tvDetailName.text = it.name
+                binding.tvDetailUsername.text = it.login
+                binding.tvDetailCompany.text = it.company
+                binding.tvRepositoryDetail.text = it.public_repos.toString()
+                binding.tvFollowersDetail.text = it.followers.toString()
+                binding.tvFollowingDetail.text = it.following.toString()
+            }
+        })
 
         binding.buttonBack.setOnClickListener{
             finish()
