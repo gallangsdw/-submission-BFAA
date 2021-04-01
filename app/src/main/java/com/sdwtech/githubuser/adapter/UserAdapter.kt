@@ -10,8 +10,9 @@ import com.sdwtech.githubuser.data.User
 import com.sdwtech.githubuser.databinding.ItemUserBinding
 import com.sdwtech.githubuser.detail.DetailActivity
 
-class UserAdapter(private val listUser: ArrayList<User>) :
-        RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdapter() : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+
+    private val listUser = ArrayList<User>()
 
     fun setData(list: ArrayList<User>) {
         listUser.clear()

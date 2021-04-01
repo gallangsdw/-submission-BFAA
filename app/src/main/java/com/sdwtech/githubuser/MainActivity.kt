@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        userAdapter = UserAdapter(listUser)
+        userAdapter = UserAdapter()
 
         viewModel = ViewModelProvider(
                 this, ViewModelProvider.NewInstanceFactory()

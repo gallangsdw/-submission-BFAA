@@ -40,13 +40,14 @@ class FollowersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val username = arguments?.getString(ARG_USERNAME).toString()
-        //val userAdapter = UserAdapter()
+        val userAdapter = UserAdapter()
 
         val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowersViewModel::class.java]
         viewModel.setData(username)
         viewModel.getData().observe(viewLifecycleOwner, { users ->
             if (users != null && users.size != 0) {
-                //userAdapter.setData(users)
+                userAdapter.setData(users)
+                binding.progressBar.visibility = View.GONE
             }
             else {
                 binding.rvFollowers.visibility = View.INVISIBLE
@@ -57,7 +58,7 @@ class FollowersFragment : Fragment() {
         with(binding.rvFollowers) {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
-            //adapter = userAdapter
+            adapter = userAdapter
         }
     }
 }

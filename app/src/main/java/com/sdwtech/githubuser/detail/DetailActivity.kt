@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.sdwtech.githubuser.adapter.SectionsPagerAdapter
 import com.sdwtech.githubuser.data.User
 import com.sdwtech.githubuser.databinding.ActivityDetailBinding
 import com.sdwtech.githubuser.viewmodel.DetailViewModel
@@ -44,5 +45,10 @@ class DetailActivity : AppCompatActivity() {
         binding.buttonBack.setOnClickListener{
             finish()
         }
+
+        val viewPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        viewPagerAdapter.username = dataUser?.login
+        binding.viewPager.adapter = viewPagerAdapter
+        binding.tabs.setupWithViewPager(binding.viewPager)
     }
 }

@@ -15,7 +15,7 @@ class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
         private val TAB_TITLES = intArrayOf(R.string.followers_title, R.string.following_title)
     }
 
-    private var username: String? = null
+    var username: String? = null
 
     override fun getCount(): Int {
         return 2
@@ -25,7 +25,7 @@ class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment = FollowersFragment.getUsername(username.toString())
-            // 1 -> fragment = FollowingFragment.getUsername(username.toString())
+            1 -> fragment = FollowingFragment.getUsername(username.toString())
         }
 
         return fragment as Fragment
