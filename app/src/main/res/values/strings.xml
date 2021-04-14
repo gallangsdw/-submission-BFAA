@@ -14,6 +14,7 @@
     <string name="number_followers">0</string>
     <string name="followers_title">Followers</string>
     <string name="following_title">Following</string>
+    <string name="favorite_user">Favorite User</string>
 </resources>
 
 

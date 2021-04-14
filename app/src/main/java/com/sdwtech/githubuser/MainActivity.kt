@@ -1,6 +1,7 @@
 package com.sdwtech.githubuser
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdwtech.githubuser.adapter.UserAdapter
 import com.sdwtech.githubuser.data.User
 import com.sdwtech.githubuser.databinding.ActivityMainBinding
+import com.sdwtech.githubuser.favorite.FavoriteActivity
 import com.sdwtech.githubuser.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +34,10 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(
                 this, ViewModelProvider.NewInstanceFactory()
         )[MainViewModel::class.java]
+
+        binding.favoriteListButton.setOnClickListener{
+            startActivity(Intent(this, FavoriteActivity::class.java))
+        }
 
         showUser()
         searchUser()
