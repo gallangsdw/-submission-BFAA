@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.sdwtech.githubuser">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.sdwtech.githubuser.READ_DATABASE" />
-    <uses-permission android:name="com.sdwtech.githubuser.WRITE_DATABASE" />
+
+    <permission
+        android:name="com.sdwtech.githubuser.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.sdwtech.githubuser.WRITE_DATABASE"
+        android:protectionLevel="normal" />
+
+    <queries>
+        <package android:name="com.sdwtech.githubuser" />
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -13,15 +25,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUser">
-        <activity android:name=".favorite.FavoriteActivity"></activity>
+        <activity android:name=".setting.SettingActivity"></activity>
+        <activity android:name=".favorite.FavoriteActivity" />
 
         <provider
             android:name=".provider.UserProvider"
             android:authorities="com.sdwtech.githubuser"
-            android:enabled="true"
             android:exported="true"
             android:readPermission="com.sdwtech.githubuser.READ_DATABASE"
             android:writePermission="com.sdwtech.githubuser.WRITE_DATABASE" />
+
+        <receiver
+            android:name=".alarm.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver" />
 
         <activity android:name=".detail.DetailActivity" />
         <activity android:name=".MainActivity" />

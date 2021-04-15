@@ -10,9 +10,9 @@ import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdwtech.githubuser.adapter.UserAdapter
-import com.sdwtech.githubuser.data.User
 import com.sdwtech.githubuser.databinding.ActivityMainBinding
 import com.sdwtech.githubuser.favorite.FavoriteActivity
+import com.sdwtech.githubuser.setting.SettingActivity
 import com.sdwtech.githubuser.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
     private lateinit var userAdapter: UserAdapter
-    private val listUser = ArrayList<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +36,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.favoriteListButton.setOnClickListener{
             startActivity(Intent(this, FavoriteActivity::class.java))
+        }
+
+        binding.settingButton.setOnClickListener {
+            startActivity(Intent(this, SettingActivity::class.java))
         }
 
         showUser()

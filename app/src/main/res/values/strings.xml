@@ -15,6 +15,14 @@
     <string name="followers_title">Followers</string>
     <string name="following_title">Following</string>
     <string name="favorite_user">Favorite User</string>
+    <string name="notification">Notification</string>
+    <string name="reminder">Reminder at 9.00 AM</string>
+    <string name="language">Language</string>
+    <string name="summary">English</string>
+    <string name="select_language">Select a Language</string>
+    <string name="setting">Setting</string>
+    <string name="notif">Github Notification</string>
+    <string name="text_notif">Find your developers on github</string>
 </resources>
 
 
