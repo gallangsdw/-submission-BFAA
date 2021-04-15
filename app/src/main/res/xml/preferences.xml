@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="@string/notification"
+        android:defaultValue="false"
+        android:icon="@drawable/ic_notifications"
+        android:title="@string/reminder"
+        />
+</PreferenceScreen>
